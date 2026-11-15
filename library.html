@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Library | Future Doctors</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Newsreader:ital,wght@0,400;0,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="#4FD1C5" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/></svg>Future Doctors</a>
+  <nav aria-label="Main"><a href="index.html">Home</a><a href="mbbs.html">MBBS</a><a href="library.html" aria-current="page">Library</a></nav>
+</div></header>
+<main><div class="wrap" style="padding-top:3rem;padding-bottom:3rem">
+  <h1 style="font-size:clamp(2.2rem,6vw,3.6rem)">The library</h1>
+  <p class="lede" style="margin-bottom:0">Books and guidelines linked from their legal sources. Search by title or subject, or filter by program.</p>
+  <div class="tools">
+    <input id="q" type="search" placeholder="Search title or subject" aria-label="Search books">
+    <select id="program" aria-label="Program"><option value="">All programs</option><option>MBBS</option><option>BDS</option><option>Pharm-D</option><option>DPT</option><option>BS Nursing</option><option>BS Medical Laboratory Technology</option><option>BS Medical Imaging Technology</option><option>BS Anesthesia Technology</option><option>BS Operation Theatre Technology</option><option>BS Cardiac Perfusion</option><option>BS Optometry</option><option>BS Nutrition</option><option>BS Biotechnology</option><option>BS Microbiology</option><option>BS Public Health</option><option>BS Psychology</option><option>BS Speech and Language Pathology</option><option>Radiology</option><option>FCPS</option><option>USMLE</option><option>PLAB</option><option>AMC</option><option>MCCQE</option><option>Other</option></select>
+  </div>
+  <div id="grid" class="books" aria-live="polite"></div>
+</div></main>
+<script>
+const grid=document.getElementById('grid'),q=document.getElementById('q'),sel=document.getElementById('program');
+let books=[];
+const p=new URLSearchParams(location.search).get('program');
+if(p)sel.value=p;
+function render(){
+  const t=q.value.trim().toLowerCase(),pr=sel.value;
+  const list=books.filter(b=>(!pr||b.program===pr)&&(!t||(b.title+' '+(b.subject||'')).toLowerCase().includes(t)));
+  grid.replaceChildren();
+  if(!list.length){const e=document.createElement('p');e.className='empty';e.textContent='No books match. Try a different search or program.';grid.append(e);return;}
+  list.forEach(b=>{
+    const c=document.createElement('article');c.className='book';
+    const h=document.createElement('h3');h.textContent=b.title;
+    const m=document.createElement('div');m.className='meta';
+    [b.program,b.subject,b.access].filter(Boolean).forEach(x=>{const s=document.createElement('span');s.textContent=x;m.append(s);});
+    const d=document.createElement('p');d.textContent=(b.description||'')+(b.source?' Source: '+b.source+'.':'');
+    const a=document.createElement('a');a.textContent='Open book';a.href=b.url;a.target='_blank';a.rel='noopener noreferrer';
+    c.append(h,m,d,a);grid.append(c);
+  });
+}
+fetch('data/books.json').then(r=>r.json()).then(d=>{books=d.books||[];render();}).catch(()=>{grid.textContent='Could not load the library. Please refresh the page.';});
+q.addEventListener('input',render);sel.addEventListener('change',render);
+</script>
+</body>
+</html>

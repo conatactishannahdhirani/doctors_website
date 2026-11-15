@@ -1,0 +1,8 @@
+{"books":[
+{"title":"Anatomy books on NCBI Bookshelf","program":"MBBS","subject":"Anatomy","source":"NCBI Bookshelf","access":"Free","description":"Free medical texts on human anatomy. Sample entry: replace with the exact book you choose.","url":"https://www.ncbi.nlm.nih.gov/books/?term=anatomy"},
+{"title":"Physiology books on NCBI Bookshelf","program":"MBBS","subject":"Physiology","source":"NCBI Bookshelf","access":"Free","description":"Free texts on how the body works. Sample entry: replace with the exact book you choose.","url":"https://www.ncbi.nlm.nih.gov/books/?term=physiology"},
+{"title":"Dental books on Open Library","program":"BDS","subject":"Dentistry","source":"Open Library","access":"Open access","description":"Search and borrow dental books. Sample entry: replace with the exact book you choose.","url":"https://openlibrary.org/search?q=dentistry"},
+{"title":"Physical therapy articles on PubMed Central","program":"DPT","subject":"Physiotherapy","source":"PubMed Central","access":"Open access","description":"Free full-text research on physical therapy. Sample entry.","url":"https://www.ncbi.nlm.nih.gov/pmc/?term=physical+therapy"},
+{"title":"Radiology books on NCBI Bookshelf","program":"Radiology","subject":"Imaging","source":"NCBI Bookshelf","access":"Free","description":"Free texts on medical imaging. Sample entry: replace with the exact book you choose.","url":"https://www.ncbi.nlm.nih.gov/books/?term=radiology"},
+{"title":"WHO guidelines and publications","program":"Other","subject":"Guidelines","source":"World Health Organization","access":"Guideline","description":"Official clinical and public health guidelines.","url":"https://www.who.int/publications"}
+]}
