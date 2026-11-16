@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Library | Future Doctors</title>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Newsreader:ital,wght@0,400;0,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  </head>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
+  <body>
 <header class="site"><div class="wrap">
   <a class="brand" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="#4FD1C5" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/></svg>Future Doctors</a>
   <nav aria-label="Main"><a href="index.html">Home</a><a href="mbbs.html">MBBS</a><a href="library.html" aria-current="page">Library</a></nav>
