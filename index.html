@@ -53,7 +53,7 @@ function render(){
     c.append(h,m,d,a);grid.append(c);
   });
 }
-fetch('data/books.json').then(r=>r.json()).then(d=>{books=d.books||[];render();}).catch(()=>{grid.textContent='Could not load the library. Please refresh the page.';});
+fetch('books.json').then(r=>r.json()).then(d=>{books=d.books||[];render();}).catch(()=>{grid.textContent='Could not load the library. Please refresh the page.';});
 q.addEventListener('input',render);sel.addEventListener('change',render);
 </script>
 </body>
