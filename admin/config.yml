@@ -1,0 +1,25 @@
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+backend:
+  name: git-gateway
+  branch: main
+collections:
+  - name: library
+    label: Library
+    files:
+      - name: books
+        label: Books
+        file: data/books.json
+        fields:
+          - label: Books
+            name: books
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - {label: Title, name: title, widget: string}
+              - {label: Program, name: program, widget: select, options: [MBBS, BDS, Pharm-D, DPT, BS Nursing, BS Medical Laboratory Technology, BS Medical Imaging Technology, BS Anesthesia Technology, BS Operation Theatre Technology, BS Cardiac Perfusion, BS Optometry, BS Nutrition, BS Biotechnology, BS Microbiology, BS Public Health, BS Psychology, BS Speech and Language Pathology, Radiology, FCPS, USMLE, PLAB, AMC, MCCQE, Other]}
+              - {label: Subject, name: subject, widget: string, required: false}
+              - {label: Source, name: source, widget: string, required: false}
+              - {label: Access, name: access, widget: select, options: [Free, Open access, Guideline, Permission granted]}
+              - {label: Description, name: description, widget: text, required: false}
+              - {label: Link to the book, name: url, widget: string}
